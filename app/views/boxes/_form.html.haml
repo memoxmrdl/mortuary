@@ -1,0 +1,19 @@
+= form_for @box do |f|
+  .form-group
+    = f.label 'Gaveta'
+    = f.select :drawer_id, Drawer.all.collect {|x| [x.name, x.id]}, {}, class: 'form-control'
+  .form-group
+    = f.label 'Nombre'
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label 'Nacimiento'
+    = f.date_field :birth, class: 'form-control'
+  .form-group
+    = f.label 'Fallecimiento'
+    = f.date_field :death, class: 'form-control'
+  .form-group
+    = f.label 'Semblanza'
+    = f.text_area :semblance, rows: 5, class: 'form-control'
+
+  = link_to 'Cancelar', drawers_path, class: 'btn btn-default'
+  = f.submit 'Guardar', class: 'btn btn-primary'
