@@ -19,11 +19,11 @@ class DrawersController < ApplicationController
   end
 
   def edit
-    @drawer = Drawer.find(params[:id])
+    @drawer = Drawer.find_by_slug(params[:id])
   end
 
   def update
-    @drawer = Drawer.find(params[:id])
+    @drawer = Drawer.find_by_slug(params[:id])
 
     if @drawer.update_attributes(drawer_params)
       redirect_to drawers_path, notice: 'Gaveta actualizada correctamente'
@@ -34,7 +34,7 @@ class DrawersController < ApplicationController
   end
 
   def destroy
-    @drawer = Drawer.find(params[:id])
+    @drawer = Drawer.find_by_slug(params[:id])
 
     if @drawer.destroy
       redirect_to drawers_path, notice: 'Gaveta eliminada correctamente'

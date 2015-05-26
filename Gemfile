@@ -20,7 +20,7 @@ gem 'pretty_formatter'
 gem 'haml-rails'
 gem 'kaminari'
 gem 'friendly_id'
-gem 'rqrcode_png'
+gem 'qr4r'
 
 group :development do
   gem 'better_errors'
