@@ -1,0 +1,6 @@
+= form_for @drawer do |f|
+  .form-group
+    = f.label 'Nombre'
+    = f.text_field :name, class: 'form-control'
+  = link_to 'Cancelar', drawers_path, class: 'btn btn-default'
+  = f.submit 'Guardar', class: 'btn btn-primary'
