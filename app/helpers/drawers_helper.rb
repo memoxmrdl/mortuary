@@ -8,4 +8,8 @@ module DrawersHelper
   def qr_image_tag(drawer, width = '100%', heigth = '100%')
     "<img src='data:image/jpeg;base64,#{qr(drawer)}'/ width=#{width} heigth=#{heigth}>".html_safe
   end
+
+  def qr_data(drawer)
+    "data:image/jpeg;base64,#{qr(drawer)}"
+  end
 end

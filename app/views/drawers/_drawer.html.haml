@@ -1,6 +1,6 @@
 %tr
-  %td= qr_image_tag(drawer, '86px', '86px')
   %td= drawer.name
-  %td= link_to 'Ver', drawer_path(drawer)
-  %td= link_to 'Editar', edit_drawer_path(drawer)
-  %td= link_to 'Eliminar', drawer_path(drawer), method: :delete
+  %td= link_to 'Descargar', qr_data(drawer), download: 'qr.png', class: 'btn btn-primary'
+  %td= link_to 'Ver', drawer_path(drawer), class: 'btn btn-success'
+  %td= link_to 'Editar', edit_drawer_path(drawer), class: 'btn btn-info'
+  %td= link_to 'Eliminar', drawer_path(drawer), method: :delete, class: 'btn btn-danger'

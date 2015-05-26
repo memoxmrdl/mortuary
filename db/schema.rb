@@ -11,20 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526032202) do
+ActiveRecord::Schema.define(version: 20150526033751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "boxes", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.date     "birth",      null: false
-    t.date     "death",      null: false
+    t.string   "name",               null: false
+    t.date     "birth",              null: false
+    t.date     "death",              null: false
     t.text     "semblance"
     t.integer  "drawer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "slug",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "slug",               null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
   end
 
   add_index "boxes", ["drawer_id"], name: "index_boxes_on_drawer_id", using: :btree

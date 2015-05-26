@@ -7,6 +7,10 @@ class DrawersController < ApplicationController
     @drawer = Drawer.new
   end
 
+  def show
+    @drawer = Drawer.find_by_slug(params[:id])
+  end
+
   def create
     @drawer = Drawer.new(drawer_params)
 

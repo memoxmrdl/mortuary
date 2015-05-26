@@ -1,19 +1,25 @@
 = form_for @box do |f|
   .form-group
     = f.label 'Gaveta'
-    = f.select :drawer_id, Drawer.all.collect {|x| [x.name, x.id]}, {}, class: 'form-control'
+    = f.select :drawer_id, Drawer.all.collect {|x| [x.name, x.id]}, {}, class: 'form-control input-sm'
   .form-group
     = f.label 'Nombre'
-    = f.text_field :name, class: 'form-control'
+    = f.text_field :name, class: 'form-control input-sm'
   .form-group
     = f.label 'Nacimiento'
-    = f.date_field :birth, class: 'form-control'
+    = f.date_field :birth, class: 'form-control input-sm'
   .form-group
     = f.label 'Fallecimiento'
-    = f.date_field :death, class: 'form-control'
+    = f.date_field :death, class: 'form-control input-sm'
+  .form-group
+    = f.label 'Cargar foto'
+    = f.file_field :photo
+  .form-group
+    = f.label 'Cargar video'
+    = f.file_field :video
   .form-group
     = f.label 'Semblanza'
-    = f.text_area :semblance, rows: 5, class: 'form-control'
+    = f.text_area :semblance, rows: 5, class: 'form-control input-sm'
 
   = link_to 'Cancelar', drawers_path, class: 'btn btn-default'
   = f.submit 'Guardar', class: 'btn btn-primary'
