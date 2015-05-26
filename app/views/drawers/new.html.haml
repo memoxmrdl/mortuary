@@ -1,0 +1,10 @@
+.container
+  .row
+    .col-md-6
+      %h2 Nueva gaveta
+      = form_for @drawer do |f|
+        .form-group
+          = f.label 'Nombre'
+          = f.text_field :name, class: 'form-control'
+        = f.submit 'Guardar', class: 'btn btn-primary'
+    .col-md-6

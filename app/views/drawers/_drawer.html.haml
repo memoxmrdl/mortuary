@@ -1,0 +1,5 @@
+%tr
+  %td= drawer.name
+  %td= link_to 'Ver', drawer_path(drawer)
+  %td= link_to 'Editar', edit_drawer_path(drawer)
+  %td= link_to 'Elminar', drawer_path(drawer), method: :delete
