@@ -13,4 +13,6 @@
           = video_tag asset_url(@box.video.url.to_s), width: '100%', controls: true, autobuffer: true
 
       = link_to 'Regresar', drawer_path(@box.drawer), class: 'btn btn-primary'
+      = link_to 'Editar', edit_box_path(@box), class: 'btn btn-info'
+      = link_to 'Eliminar', box_path(@box), method: :delete, class: 'btn btn-danger'
     .col-md-6

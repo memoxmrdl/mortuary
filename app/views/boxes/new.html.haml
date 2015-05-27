@@ -3,5 +3,5 @@
     .col-md-6
       %h2 Nuevo nicho
       = messages
-      = render 'form'
+      = render partial: 'form', locals: { action: :new }
     .col-md-6
