@@ -1,3 +1,3 @@
 = link_to drawer_box_path(@drawer, box), class: 'list-group-item' do
   %h4.list-group-item-heading= box.name
-  %p.list-group-item-text= box.semblance
+  %p.list-group-item-text= truncate(box.semblance, length: 256)
