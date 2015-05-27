@@ -1,10 +1,11 @@
 class BoxesController < ApplicationController
+  before_filter :find_box, only: [:show, :edit, :update, :destroy]
+
   def new
     @box = Box.new
   end
 
   def show
-    @box = Box.find_by_slug(params[:id])
   end
 
   def create
@@ -19,12 +20,9 @@ class BoxesController < ApplicationController
   end
 
   def edit
-    @box = Box.find_by_slug(params[:id])
   end
 
   def update
-    @box = Box.find_by_slug(params[:id])
-
     if @box.update_attributes(box_params)
       redirect_to drawer_box_path(@box.drawer, @box), notice: 'Nicho actualizado correctamente'
     else
@@ -34,13 +32,8 @@ class BoxesController < ApplicationController
   end
 
   def destroy
-    @box = Box.find_by_slug(params[:id])
-
-    if @box.destroy
-      redirect_to drawers_path, notice: 'Nicho eliminado correctamente'
-    else
-      redirect_to drawers_path, alert: 'No se encontro ningun nicho'
-    end
+    @box.destroy
+    redirect_to drawers_path, notice: 'Nicho eliminado correctamente'
   end
 
   private
@@ -53,5 +46,13 @@ class BoxesController < ApplicationController
                                 :drawer_id,
                                 :photo,
                                 :video)
+  end
+
+  def find_box
+    @box = Box.find_by_slug(params[:id])
+
+    unless @box
+      redirect_to drawers_path, alert: 'No se encontro ningun nicho'
+    end
   end
 end

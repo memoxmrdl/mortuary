@@ -1,4 +1,6 @@
 class DrawersController < ApplicationController
+  before_filter :find_drawer, only: [:show, :edit, :update, :destroy]
+
   def index
     @drawers = Drawer.all
   end
@@ -8,7 +10,6 @@ class DrawersController < ApplicationController
   end
 
   def show
-    @drawer = Drawer.find_by_slug(params[:id])
   end
 
   def create
@@ -23,12 +24,9 @@ class DrawersController < ApplicationController
   end
 
   def edit
-    @drawer = Drawer.find_by_slug(params[:id])
   end
 
   def update
-    @drawer = Drawer.find_by_slug(params[:id])
-
     if @drawer.update_attributes(drawer_params)
       redirect_to drawers_path, notice: 'Gaveta actualizada correctamente'
     else
@@ -38,16 +36,19 @@ class DrawersController < ApplicationController
   end
 
   def destroy
-    @drawer = Drawer.find_by_slug(params[:id])
-
-    if @drawer.destroy
-      redirect_to drawers_path, notice: 'Gaveta eliminada correctamente'
-    else
-      redirect_to drawers_path, alert: 'No se encontro ninguna gaveta'
-    end
+    @drawer.destroy
+    redirect_to drawers_path, notice: 'Gaveta eliminada correctamente'
   end
 
   private
+
+  def find_drawer
+    @drawer = Drawer.find_by_slug(params[:id])
+
+    unless @drawer
+      redirect_to drawers_path, alert: 'No se encontro ninguna gaveta'
+    end
+  end
 
   def drawer_params
     params.require(:drawer).permit(:name)
