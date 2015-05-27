@@ -2,6 +2,7 @@
   .row
     .col-md-6
       %h2= @drawer.name
+      = link_to 'Nuevo nicho', new_box_path, class: 'btn btn-primary new-box'
       .list-group
         = render partial: 'drawers/box', collection: @drawer.boxes, as: :box
       = link_to 'Regresar', drawers_path, class: 'btn btn-primary'

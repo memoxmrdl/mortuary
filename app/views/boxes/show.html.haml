@@ -3,14 +3,14 @@
     .col-md-6
       .row
         .col-md-3.text-center
-          = image_tag(@box.photo.url(:small), size: '100x100', class: 'img-rounded')
+          = image_tag(@box.photo.url(:small), size: '140x140', class: 'img-thumbnail')
         .col-md-9
           %h3{style: 'margin-top:0'}= @box.name
           %h5= "#{@box.birth.to_s} - #{@box.death.to_s}"
           %p= @box.semblance
       .row
         .col-md-12
-          = video_tag asset_url(@box.video.url.to_s), width: '100%', controls: true, autobuffer: true
+          = video_tag asset_url(@box.video.url.to_s), width: '100%', autoplay: true, controls: true, autobuffer: true
 
       = link_to 'Regresar', drawer_path(@box.drawer), class: 'btn btn-primary'
       = link_to 'Editar', edit_box_path(@box), class: 'btn btn-info'
